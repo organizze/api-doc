@@ -10,21 +10,11 @@ A API do Organizze possibilita que aplicações se comuniquem com a sua conta no
 Fazendo uma requisição
 ----
 
-Atualmente a API do Organizze suporta apenas autenticação HTTP básica. Você deve enviar o email e senha usados para acessar o Organizze no header Authorization. Você também deve identificar a sua aplicação  informando o nome da aplicação e um email para contato através do header User-Agent. Um exemplo de requisição à API do Organizze seria:
-
-```
-curl -u email:senha -H 'User-Agent: MinhaApp (email-responsavel@minhapp.com)' https://api.organizze.com.br/rest/v2/entities
-```
+A autenticação de todas request é via Http Basic.
+- Username: email da conta do Organizze
+- Password: Token de acesso. Você consegue ele acessando sua conta do Organizze, no path /configuracoes/api-keys.
 
 Todas as requisições são criptografadas, o Organizze não aceita requisições feitas com HTTP simples, apenas HTTPS. A URL base da API é https://api.organizze.com.br/rest/v2
-
-Autenticação
-----
-
-Atualmente a única forma de autenticação na API do Organizze é através do email e senha utilizados para acessar a sua conta no Organizze. Futuramente outros mecanismos de autenticação serão implementados.
-
-Identifique a sua aplicação
-----
 
 Todas as requisições à API do Organizze devem ser acompanhadas do header User-Agent, use este header para informar qual a sua aplicação e qual o seu email para contato. Veja alguns exemplos de como você pode se identificar usando o header User-Agent:
 
