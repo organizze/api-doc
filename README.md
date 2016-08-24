@@ -68,69 +68,14 @@ Uma tentativa de criar ou atualizar um registro inválido. No exemplo abaixo o u
 }
 ```
 
-Entidades
-====
-
-Uma entidade no Organizze representa uma conta no sistema. Esta entidade pode ser uma empresa, uma família, uma pessoa. Qualquer pessoa/organização que tem suas finanças controladas pelo sistema. Quando você se cadastra no Organizze, você está criando uma entidade, se você tem uma conta pessoal e outra empresarial, há duas entidades no Organizze associadas ao seu usuário.
-
-Listar entidades
-----
-
-### Request:
-
-```GET /entities```
-
-### Response:
-
-```json
-[
-    {
-        "id": 3,
-        "name": "Esdras Mayrink",
-        "plan_key": "mais",
-        "license_status": "active",
-        "owner_id": 3
-    },
-    {
-        "id": 4,
-        "name": "Organizze",
-        "plan_key": "empresas",
-        "license_status": "free_trial",
-        "owner_id": 3
-    }
-]
-```
-
-Detalhar entidade
-----
-
-### Request:
-
-```GET /entities/4```
-
-```json
-{
-    "id": 4,
-    "name": "Organizze",
-    "plan_key": "empresas",
-    "license_status": "free_trial",
-    "owner_id": 3
-}
-```
-A maioria dos atributos da entidade são auto explicativos, ```owner_id``` é o id do usuário responsável pela conta.
-
-
 Usuários
 ====
-
-Cada entidade tem um ou mais usuários. Um desses usuários é o responsável pela conta e é referenciado pela ```entity``` através do campo ```owner_id````. Os atributos do usuários são auto explicativos, o atributo role informa o papel do usuário na entidade, o papel do usuário pode ser ```admin```, ```supervisor```, ```operator``` ou ```custom```, este último tem suas permissões definadas arbitrariamente pelos administradores da conta.
-
-Listar usuários
+Listar usuários da conta (exclusivo versão Empresasarial do Organizze)
 ----
 
 ### Request:
 
-```GET /entities/4/users```
+```GET /users```
 
 ### Response:
 
@@ -150,7 +95,7 @@ Detalhar usuário
 
 ### Request:
 
-```GET /entities/4/users/3```
+```GET /users/3```
 
 ### Response:
 
@@ -168,7 +113,7 @@ Listar contas bancárias
 
 ### Request:
 
-```GET /entities/4/accounts```
+```GET /accounts```
 
 ### Response:
 
@@ -212,7 +157,7 @@ Detalhar conta bancária
 
 ### Request:
 
-```GET /entities/4/accounts/3```
+```GET /accounts/3```
 
 ### Response:
 
@@ -234,7 +179,7 @@ Criar conta bancária
 
 ### Request:
 
-```POST /entities/4/accounts```
+```POST /accounts```
 
 #### Body:
 
@@ -267,7 +212,7 @@ Atualizar conta bancária
 
 ### Request:
 
-```PUT /entities/4/accounts/18```
+```PUT /accounts/18```
 
 #### Body:
 
@@ -297,7 +242,7 @@ Excluir conta bancária
 
 ### Request:
 
-```DELETE /entities/4/accounts/18```
+```DELETE /accounts/18```
 
 ### Response:
 
@@ -319,7 +264,7 @@ Listar centros de custo
 
 ### Request:
 
-```GET /entities/4/cost-centers```
+```GET /cost-centers```
 
 ### Response:
 
@@ -361,7 +306,7 @@ Detalhar conta centro de custo
 
 ### Request:
 
-```GET /entities/4/cost-centers/1```
+```GET /cost-centers/1```
 
 ### Response:
 
@@ -380,7 +325,7 @@ Cria um centro de custo
 
 ### Request:
 
-```POST /entities/4/cost-centers```
+```POST /cost-centers```
 
 #### Body:
 
@@ -407,7 +352,7 @@ Atualizar um centro de custo
 
 ### Request:
 
-```PUT /entities/4/cost-centers/6```
+```PUT /cost-centers/6```
 
 #### Body:
 
@@ -433,7 +378,7 @@ Excluir centro de custo
 
 ### Request:
 
-```DELETE /entities/4/cost-centers/6```
+```DELETE /cost-centers/6```
 
 ### Response:
 
@@ -452,7 +397,7 @@ Listar categorias
 
 ### Request:
 
-```GET /entities/4/categories```
+```GET /categories```
 
 ### Response:
 
@@ -498,7 +443,7 @@ Detalhar categoria
 
 ### Request:
 
-```GET /entities/4/categories/1```
+```GET /categories/1```
 
 ### Response:
 
@@ -518,7 +463,7 @@ Cria uma categoria
 
 ### Request
 
-```POST /entities/4/categories```
+```POST /categories```
 
 #### Body:
 
@@ -546,7 +491,7 @@ Atualizar uma categoria
 
 ### Request:
 
-```PUT /entities/4/categories/6```
+```PUT /categories/6```
 
 #### Body:
 
@@ -576,7 +521,7 @@ Ao excluir uma categoria você pode informar uma categoria para substitui-la, to
 
 ### Request:
 
-```DELETE /entities/4/categories/6```
+```DELETE /categories/6```
 
 #### Body:
 
@@ -605,7 +550,7 @@ Listar cartões de crédito
 
 ### Request:
 
-```GET /entities/4/credit-cards```
+```GET /credit-cards```
 
 ### Response:
 
@@ -647,7 +592,7 @@ Detalhar cartão de crédito
 
 ### Request:
 
-```GET /entities/4/credit-cards/3```
+```GET /credit-cards/3```
 
 ### Response
 
@@ -673,7 +618,7 @@ Criar um cartão de crédito
 
 ### Request:
 
-```POST /entities/4/credit-cards```
+```POST /credit-cards```
 
 #### Body:
 
@@ -711,7 +656,7 @@ Atualizar um cartão de crédito
 
 ### Request:
 
-```PUT /entities/4/categories/6```
+```PUT /categories/6```
 
 #### Body:
 
@@ -748,7 +693,7 @@ Excluir um cartão de crédito
 
 ### Request:
 
-```DELETE /entities/4/credit-cards/3```
+```DELETE /credit-cards/3```
 
 ### Response:
 
@@ -774,7 +719,7 @@ Listar as faturas de um cartão de crédito
 
 ### Request:
 
-```GET /entities/4/credit-cards/3/invoices```
+```GET /credit-cards/3/invoices```
 
 ### Response:
 
@@ -920,7 +865,7 @@ Detalhar uma fatura de cartão de crédito
 
 ### Request:
 
-```GET /entities/4/credit-cards/3```
+```GET /credit-cards/3```
 
 ### Response:
 
@@ -1001,7 +946,7 @@ Pagamento de uma fatura
 
 ### Request:
 
-```GET /entities/4/credit-cards/3/invoices/186/payments```
+```GET /credit-cards/3/invoices/186/payments```
 
 ### Response:
 
@@ -1031,7 +976,7 @@ Listar contatos
 
 ### Request:
 
-```GET /entities/4/payees```
+```GET /payees```
 
 ### Response:
 
@@ -1065,7 +1010,7 @@ Detalhar um contato
 
 ### Request:
 
-```GET /entities/4/payees/13```
+```GET /payees/13```
 
 ### Response:
 
@@ -1084,7 +1029,7 @@ Cria um contato
 
 ### Request:
 
-```POST /entities/4/payees```
+```POST /payees```
 
 #### Body:
 
@@ -1115,7 +1060,7 @@ Atualizar um contato
 
 ### Request:
 
-```PUT /entities/4/payees/14```
+```PUT /payees/14```
 
 #### Body:
 
@@ -1145,7 +1090,7 @@ Excluir contato
 
 ### Request:
 
-```DELETE /entities/4/payees/14```
+```DELETE /payees/14```
 
 ### Response:
 
@@ -1168,7 +1113,7 @@ Listar movimentações
 
 ### Request:
 
-```GET /entities/4/transactions```
+```GET /transactions```
 
 ### Response:
 
@@ -1278,7 +1223,7 @@ Detalhar uma movimentação
 
 ### Request:
 
-```GET /entities/4/transactions/15```
+```GET /transactions/15```
 
 ### Response:
 
@@ -1313,7 +1258,7 @@ Cria uma movimentação
 
 ### Request:
 
-```POST /entities/4/transactions```
+```POST /transactions```
 
 #### Body:
 
@@ -1359,7 +1304,7 @@ Atualizar uma movimentação
 
 ### Request:
 
-```PUT /entities/4/transactions/101```
+```PUT /transactions/101```
 
 #### Body:
 
@@ -1406,7 +1351,7 @@ Excluir movimentação
 
 ### Request:
 
-```DELETE /entities/4/transactions/101```
+```DELETE /transactions/101```
 
 #### Body:
 
