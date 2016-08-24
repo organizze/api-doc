@@ -1110,6 +1110,7 @@ Excluir contato
 
 Listar movimentações
 ----
+A paginação de movimentações é feita com os parametros start_date e end_date, conforme descrito na seção de Paginação acima.
 
 ### Request:
 
