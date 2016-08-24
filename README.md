@@ -10,8 +10,8 @@ A API do Organizze possibilita que aplicações se comuniquem com a sua conta no
 Fazendo uma requisição
 ----
 
-A autenticação de todas request é via Http Basic.
-- Username: email da conta do Organizze
+A autenticação de todas request é via Http Basic com o Username e Password descritos abaixo:
+- Username: Email da conta do Organizze
 - Password: Token de acesso. Você consegue ele acessando sua conta do Organizze, no path /configuracoes/api-keys.
 
 Todas as requisições são criptografadas, o Organizze não aceita requisições feitas com HTTP simples, apenas HTTPS. A URL base da API é https://api.organizze.com.br/rest/v2
