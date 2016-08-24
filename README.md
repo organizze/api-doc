@@ -259,7 +259,7 @@ Excluir conta bancária
 }
 ```
 
-Listar centros de custo
+Listar centros de custo (exclusivo Empresarial)
 ----
 
 ### Request:
