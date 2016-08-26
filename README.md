@@ -84,7 +84,7 @@ Listar usuários da conta (exclusivo versão Empresasarial do Organizze)
     {
         "id": 3,
         "name": "Esdras Mayrink",
-        "email": "falecom@oesdras.com.br",
+        "email": "falecom@email.com.br",
         "role": "admin"
     }
 ]
@@ -103,7 +103,7 @@ Detalhar usuário
 {
     "id": 3,
     "name": "Esdras Mayrink",
-    "email": "falecom@oesdras.com.br",
+    "email": "falecom@email.com.br",
     "role": "admin"
 }
 ```
