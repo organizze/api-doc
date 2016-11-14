@@ -264,7 +264,7 @@ Listar centros de custo (exclusivo Empresarial)
 
 ### Request:
 
-```GET /cost_centerss```
+```GET /cost_centers```
 
 ### Response:
 
@@ -306,7 +306,7 @@ Detalhar conta centro de custo
 
 ### Request:
 
-```GET /cost_centerss/1```
+```GET /cost_centers/1```
 
 ### Response:
 
@@ -325,7 +325,7 @@ Cria um centro de custo
 
 ### Request:
 
-```POST /cost_centerss```
+```POST /cost_centers```
 
 #### Body:
 
@@ -352,7 +352,7 @@ Atualizar um centro de custo
 
 ### Request:
 
-```PUT /cost_centerss/6```
+```PUT /cost_centers/6```
 
 #### Body:
 
@@ -378,7 +378,7 @@ Excluir centro de custo
 
 ### Request:
 
-```DELETE /cost_centerss/6```
+```DELETE /cost_centers/6```
 
 ### Response:
 
