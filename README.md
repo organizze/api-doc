@@ -264,7 +264,7 @@ Listar centros de custo (exclusivo Empresarial)
 
 ### Request:
 
-```GET /cost-centers```
+```GET /cost_centerss```
 
 ### Response:
 
@@ -306,7 +306,7 @@ Detalhar conta centro de custo
 
 ### Request:
 
-```GET /cost-centers/1```
+```GET /cost_centerss/1```
 
 ### Response:
 
@@ -325,7 +325,7 @@ Cria um centro de custo
 
 ### Request:
 
-```POST /cost-centers```
+```POST /cost_centerss```
 
 #### Body:
 
@@ -352,7 +352,7 @@ Atualizar um centro de custo
 
 ### Request:
 
-```PUT /cost-centers/6```
+```PUT /cost_centerss/6```
 
 #### Body:
 
@@ -378,7 +378,7 @@ Excluir centro de custo
 
 ### Request:
 
-```DELETE /cost-centers/6```
+```DELETE /cost_centerss/6```
 
 ### Response:
 
@@ -550,7 +550,7 @@ Listar cartões de crédito
 
 ### Request:
 
-```GET /credit-cards```
+```GET /credit_cards```
 
 ### Response:
 
@@ -592,7 +592,7 @@ Detalhar cartão de crédito
 
 ### Request:
 
-```GET /credit-cards/3```
+```GET /credit_cards/3```
 
 ### Response
 
@@ -618,7 +618,7 @@ Criar um cartão de crédito
 
 ### Request:
 
-```POST /credit-cards```
+```POST /credit_cards```
 
 #### Body:
 
@@ -693,7 +693,7 @@ Excluir um cartão de crédito
 
 ### Request:
 
-```DELETE /credit-cards/3```
+```DELETE /credit_cards/3```
 
 ### Response:
 
@@ -719,7 +719,7 @@ Listar as faturas de um cartão de crédito
 
 ### Request:
 
-```GET /credit-cards/3/invoices```
+```GET /credit_cards/3/invoices```
 
 ### Response:
 
@@ -865,7 +865,7 @@ Detalhar uma fatura de cartão de crédito
 
 ### Request:
 
-```GET /credit-cards/3```
+```GET /credit_cards/3```
 
 ### Response:
 
@@ -946,7 +946,7 @@ Pagamento de uma fatura
 
 ### Request:
 
-```GET /credit-cards/3/invoices/186/payments```
+```GET /credit_cards/3/invoices/186/payments```
 
 ### Response:
 
