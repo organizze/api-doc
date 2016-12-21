@@ -1253,7 +1253,7 @@ Detalhar uma movimentação
 }
 ```
 
-Cria uma movimentação
+Cria uma movimentação.
 ----
 
 ### Request:
@@ -1264,10 +1264,9 @@ Cria uma movimentação
 
 ```json
 {
-    "description": "Parcelada",
+    "description": "Computador",
     "notes": "Pagamento via boleto",
-    "date": "2015-09-16",
-    "recurrence_attributes": {"total": 3, "periodicity": "monthly"}
+    "date": "2015-09-16"
 }
 ```
 
@@ -1276,7 +1275,56 @@ Cria uma movimentação
 ```json
 {
     "id": 97,
-    "description": "Parcelada",
+    "description": "Computador",
+    "date": "2015-09-16",
+    "paid": false,
+    "amount_cents": 0,
+    "total_installments": 1,
+    "installment": 1,
+    "recurring": false,
+    "account_id": 3,
+    "category_id": 21,
+    "contact_id": null,
+    "notes": "Pagamento via boleto",
+    "attachments_count": 0,
+    "credit_card_id": null,
+    "credit_card_invoice_id": null,
+    "paid_credit_card_id": null,
+    "paid_credit_card_invoice_id": null,
+    "oposite_transaction_id": null,
+    "oposite_account_id": null,
+    "created_at": "2015-09-04T00:09:34-03:00",
+    "updated_at": "2015-09-04T00:09:34-03:00"
+}
+```
+
+
+Cria uma movimentação recorrente (fixa).
+----
+
+Os valores para `periodicity` são: `["monthly", "yearly", "weekly", "biweekly", "bimonthly", "trimonthly"]`
+
+### Request:
+
+```POST /transactions```
+
+#### Body:
+
+```json
+{
+    "description": "Despesa fixa",
+    "notes": "Pagamento via boleto",
+    "date": "2015-09-16",
+    "recurrence_attributes": {"periodicity": "monthly"}
+}
+```
+
+### Response:
+
+```json
+{
+    "id": 97,
+    "description": "Despesa fixa",
     "date": "2015-09-16",
     "paid": false,
     "amount_cents": 0,
@@ -1299,8 +1347,62 @@ Cria uma movimentação
 }
 ```
 
+
+
+
+Cria uma movimentação recorrente (parcelada).
+----
+
+Os valores para `periodicity` são: `["monthly", "yearly", "weekly", "biweekly", "bimonthly", "trimonthly"]`
+
+### Request:
+
+```POST /transactions```
+
+#### Body:
+
+```json
+{
+    "description": "Despesa parcelada",
+    "notes": "Pagamento via boleto",
+    "date": "2015-09-16",
+    "installments_attributes": {"periodicity": "monthly", "total": 12}
+}
+```
+
+### Response:
+
+```json
+{
+    "id": 97,
+    "description": "Despesa parcelada",
+    "date": "2015-09-16",
+    "paid": false,
+    "amount_cents": 0,
+    "total_installments": 12,
+    "installment": 1,
+    "recurring": false,
+    "account_id": 3,
+    "category_id": 21,
+    "contact_id": null,
+    "notes": "Pagamento via boleto",
+    "attachments_count": 0,
+    "credit_card_id": null,
+    "credit_card_invoice_id": null,
+    "paid_credit_card_id": null,
+    "paid_credit_card_invoice_id": null,
+    "oposite_transaction_id": null,
+    "oposite_account_id": null,
+    "created_at": "2015-09-04T00:09:34-03:00",
+    "updated_at": "2015-09-04T00:09:34-03:00"
+}
+```
+
+
 Atualizar uma movimentação
 ----
+
+No caso de movimentações fixas ou parceladas, para atualizar a movimentação e as próximas ocorrências envie o attributo `"update_future": true`; Caso queira atualizar todas as ocorrências, inclusive as anteriores, envie o attributo `"update_all": true`. Observe que este último pode alterar o saldo da conta caso as movimentações anteriores já estejam pagas/recebidas.
 
 ### Request:
 
@@ -1349,15 +1451,20 @@ Atualizar uma movimentação
 Excluir movimentação
 ----
 
+No caso de movimentações fixas ou parceladas, para excluir a movimentação e as próximas ocorrências envie o attributo `"update_future": true`; Caso queira excluir todas as ocorrências, inclusive as anteriores, envie o attributo `"update_all": true`. Observe que este último pode alterar o saldo da conta caso as movimentações anteriores já estejam pagas/recebidas.
+
 ### Request:
 
 ```DELETE /transactions/101```
 
+
 #### Body:
 
+```json
 {
     "update_future": true
 }
+```
 
 ### Response:
 
@@ -1386,4 +1493,3 @@ Excluir movimentação
     "updated_at": "2015-09-04T00:34:54-03:00"
 }
 ```
-
