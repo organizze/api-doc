@@ -893,7 +893,7 @@ Detalhar uma fatura de cartão de crédito
             "account_id": 3,
             "account_type": "CreditCard",
             "category_id": 21,
-            "payee_id": null,
+            "contact_id": null,
             "notes": "",
             "attachments_count": 0,
             "created_at": "2015-08-04T20:13:49-03:00",
@@ -911,7 +911,7 @@ Detalhar uma fatura de cartão de crédito
             "account_id": 3,
             "account_type": "CreditCard",
             "category_id": 21,
-            "payee_id": null,
+            "contact_id": null,
             "notes": "",
             "attachments_count": 0,
             "created_at": "2015-07-01T10:52:06-03:00",
@@ -931,7 +931,7 @@ Detalhar uma fatura de cartão de crédito
             "account_id": 3,
             "account_type": "Account",
             "category_id": 21,
-            "payee_id": null,
+            "contact_id": null,
             "notes": null,
             "attachments_count": 0,
             "created_at": "2015-09-01T23:42:29-03:00",
@@ -963,7 +963,7 @@ Pagamento de uma fatura
     "account_id": 3,
     "account_type": "Account",
     "category_id": 21,
-    "payee_id": null,
+    "contact_id": null,
     "notes": "Pagamento via boleto",
     "attachments_count": 0,
     "created_at": "2015-09-15T22:27:20-03:00",
@@ -976,7 +976,7 @@ Listar contatos
 
 ### Request:
 
-```GET /payees```
+```GET /contacts```
 
 ### Response:
 
@@ -1010,7 +1010,7 @@ Detalhar um contato
 
 ### Request:
 
-```GET /payees/13```
+```GET /contacts/13```
 
 ### Response:
 
@@ -1029,7 +1029,7 @@ Cria um contato
 
 ### Request:
 
-```POST /payees```
+```POST /contacts```
 
 #### Body:
 
@@ -1060,7 +1060,6 @@ Atualizar um contato
 
 ### Request:
 
-```PUT /payees/14```
 
 #### Body:
 
@@ -1090,7 +1089,7 @@ Excluir contato
 
 ### Request:
 
-```DELETE /payees/14```
+```DELETE /contacts/14```
 
 ### Response:
 
@@ -1132,7 +1131,7 @@ A paginação de movimentações é feita com os parametros start_date e end_dat
         "account_id": 3,
         "account_type": "CreditCard",
         "category_id": 21,
-        "payee_id": null,
+        "contact_id": null,
         "notes": "",
         "attachments_count": 0,
         "credit_card_id": 3,
@@ -1156,7 +1155,7 @@ A paginação de movimentações é feita com os parametros start_date e end_dat
         "account_id": 3,
         "account_type": "Account",
         "category_id": 18,
-        "payee_id": null,
+        "contact_id": null,
         "notes": "",
         "attachments_count": 0,
         "credit_card_id": null,
@@ -1180,7 +1179,7 @@ A paginação de movimentações é feita com os parametros start_date e end_dat
         "account_id": 4,
         "account_type": "Account",
         "category_id": 18,
-        "payee_id": null,
+        "contact_id": null,
         "notes": "",
         "attachments_count": 0,
         "credit_card_id": null,
@@ -1204,7 +1203,7 @@ A paginação de movimentações é feita com os parametros start_date e end_dat
         "account_id": 3,
         "account_type": "Account",
         "category_id": 21,
-        "payee_id": null,
+        "contact_id": null,
         "notes": null,
         "attachments_count": 0,
         "credit_card_id": null,
@@ -1240,7 +1239,7 @@ Detalhar uma movimentação
     "recurring": false,
     "account_id": 3,
     "category_id": 21,
-    "payee_id": null,
+    "contact_id": null,
     "notes": "",
     "attachments_count": 0,
     "credit_card_id": 3,
@@ -1286,7 +1285,7 @@ Cria uma movimentação
     "recurring": true,
     "account_id": 3,
     "category_id": 21,
-    "payee_id": null,
+    "contact_id": null,
     "notes": "Pagamento via boleto",
     "attachments_count": 0,
     "credit_card_id": null,
@@ -1333,7 +1332,7 @@ Atualizar uma movimentação
     "recurring": true,
     "account_id": 3,
     "category_id": 21,
-    "payee_id": null,
+    "contact_id": null,
     "notes": "Pagamento via boleto",
     "attachments_count": 0,
     "credit_card_id": null,
@@ -1374,7 +1373,7 @@ Excluir movimentação
     "recurring": true,
     "account_id": 3,
     "category_id": 21,
-    "payee_id": null,
+    "contact_id": null,
     "notes": "Pagamento via boleto",
     "attachments_count": 0,
     "credit_card_id": null,
