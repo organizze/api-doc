@@ -1109,7 +1109,7 @@ Excluir contato
 
 Listar movimentações
 ----
-A paginação de movimentações é feita com os parametros start_date e end_date, conforme descrito na seção de Paginação acima. O periodo processado será sempre mês inteiro. Ou seja, seu start_date é sempre processado como ```start_data.beginning_of_month``` e o seu end_date é sempre convertido para ```end_date.end_of_month```.
+A paginação de movimentações é feita com os parametros start_date e end_date, conforme descrito na seção de Paginação acima. O periodo processado será sempre mês inteiro. Ou seja, seu start_date é sempre processado como ```start_date.beginning_of_month``` e o seu end_date é sempre convertido para ```end_date.end_of_month```.
 
 ### Request:
 
