@@ -1,14 +1,55 @@
 A API do Organizze
 ======
 
-Introdução
-----
+- [Introdução](#introdução)
+- [Fazendo uma requisição](#fazendo-uma-requisição)
+- [Apenas JSON](#apenas-json)
+- [Paginação](#paginação)
+- [Erros](#erros)
+- [Listar usuários da conta (exclusivo versão Empresasarial do Organizze)](#listar-usuários-da-conta-(exclusivo-versão-empresasarial-do-organizze))
+- [Detalhar usuário](#detalhar-usuário)
+- [Listar contas bancárias](#listar-contas-bancárias)
+- [Detalhar conta bancária](#detalhar-conta-bancária)
+- [Criar conta bancária](#criar-conta-bancária)
+- [Atualizar conta bancária](#atualizar-conta-bancária)
+- [Excluir conta bancária](#excluir-conta-bancária)
+- [Listar centros de custo (exclusivo Empresarial)](#listar-centros-de-custo-(exclusivo-empresarial))
+- [Detalhar conta centro de custo](#detalhar-conta-centro-de-custo)
+- [Cria um centro de custo](#cria-um-centro-de-custo)
+- [Atualizar um centro de custo](#atualizar-um-centro-de-custo)
+- [Excluir centro de custo](#excluir-centro-de-custo)
+- [Listar categorias](#listar-categorias)
+- [Detalhar categoria](#detalhar-categoria)
+- [Cria uma categoria](#cria-uma-categoria)
+- [Atualizar uma categoria](#atualizar-uma-categoria)
+- [Excluir uma categoria](#excluir-uma-categoria)
+- [Listar cartões de crédito](#listar-cartões-de-crédito)
+- [Detalhar cartão de crédito](#detalhar-cartão-de-crédito)
+- [Criar um cartão de crédito](#criar-um-cartão-de-crédito)
+- [Atualizar um cartão de crédito](#atualizar-um-cartão-de-crédito)
+- [Excluir um cartão de crédito](#excluir-um-cartão-de-crédito)
+- [Listar as faturas de um cartão de crédito](#listar-as-faturas-de-um-cartão-de-crédito)
+- [Detalhar uma fatura de cartão de crédito](#detalhar-uma-fatura-de-cartão-de-crédito)
+- [Pagamento de uma fatura](#pagamento-de-uma-fatura)
+- [Listar contatos](#listar-contatos)
+- [Detalhar um contato](#detalhar-um-contato)
+- [Cria um contato](#cria-um-contato)
+- [Atualizar um contato](#atualizar-um-contato)
+- [Excluir contato](#excluir-contato)
+- [Listar movimentações](#listar-movimentações)
+- [Detalhar uma movimentação](#detalhar-uma-movimentação)
+- [Cria uma movimentação.](#cria-uma-movimentação.)
+- [Cria uma movimentação recorrente (fixa).](#cria-uma-movimentação-recorrente-(fixa).)
+- [Cria uma movimentação recorrente (parcelada).](#cria-uma-movimentação-recorrente-(parcelada).)
+- [Atualizar uma movimentação](#atualizar-uma-movimentação)
+- [Excluir movimentação](#excluir-movimentação)
+
+# Introdução
 
 A API do Organizze possibilita que aplicações se comuniquem com a sua conta no sistema. Este documento explica como o Organizze funciona, quais são os objetos envolvidos e como esta comunicação pode ser feita. Esta é a primeira versão da API, ainda em versão beta, algumas mudanças e melhorias serão implementadas futuramente.
 
 
-Fazendo uma requisição
-----
+# Fazendo uma requisição
 
 A autenticação de todas request é via Http Basic com o Username e Password descritos abaixo:
 - Username: Email da conta do Organizze
@@ -25,18 +66,15 @@ User-Agent: Controle de Estoque (controledeestoque.com.br)
 
 Se você não informar este header, você receberá ```400 Bad Request``` como resposta.
 
-Apenas JSON
-----
+# Apenas JSON
 
 A API só suporta JSON, nós não vamos dar suporte a outro formato. Mesmo que você não utilize o header ```Content-Type: application/json; charset=utf-8``` a resposta será em JSON e com charset utf-8.
 
-Paginação
-----
+# Paginação
 
 Algumas requisições são paginadas, por exemplo, se você listar os contatos da sua conta, a API vai retornar os primeiros 50 contatos, para acessar a próxima página basta enviar ```&page=2``` como parâmetro. Movimentações e faturas de cartão de crédito são paginadas por período. Para informar qual período utilize os parâmetros ```&start_date=2015-09-01&end_date=2015-09-30```. Se você não informar o período o Organizze vai limitar os registros para o período atual: Mês atual para movimentações e Ano atual para faturas de cartão de crédito.
 
-Erros
-----
+# Erros
 
 Abaixo estão listados alguns exemplos de erros que podem acontecer e as suas respectivas respostas:
 
@@ -70,8 +108,7 @@ Uma tentativa de criar ou atualizar um registro inválido. No exemplo abaixo o u
 
 Usuários
 ====
-Listar usuários da conta (exclusivo versão Empresasarial do Organizze)
-----
+# Listar usuários da conta (exclusivo versão Empresasarial do Organizze)
 
 ### Request:
 
@@ -90,8 +127,7 @@ Listar usuários da conta (exclusivo versão Empresasarial do Organizze)
 ]
 ```
 
-Detalhar usuário
-----
+# Detalhar usuário
 
 ### Request:
 
@@ -108,8 +144,7 @@ Detalhar usuário
 }
 ```
 
-Listar contas bancárias
-----
+# Listar contas bancárias
 
 ### Request:
 
@@ -152,8 +187,7 @@ Listar contas bancárias
 ]
 ```
 
-Detalhar conta bancária
-----
+# Detalhar conta bancária
 
 ### Request:
 
@@ -174,8 +208,7 @@ Detalhar conta bancária
 }
 ```
 
-Criar conta bancária
-----
+# Criar conta bancária
 
 ### Request:
 
@@ -207,8 +240,7 @@ Criar conta bancária
 }
 ```
 
-Atualizar conta bancária
-----
+# Atualizar conta bancária
 
 ### Request:
 
@@ -237,8 +269,7 @@ Atualizar conta bancária
 }
 ```
 
-Excluir conta bancária
-----
+# Excluir conta bancária
 
 ### Request:
 
@@ -259,8 +290,7 @@ Excluir conta bancária
 }
 ```
 
-Listar centros de custo (exclusivo Empresarial)
-----
+# Listar centros de custo (exclusivo Empresarial)
 
 ### Request:
 
@@ -301,8 +331,7 @@ Listar centros de custo (exclusivo Empresarial)
 ]
 ```
 
-Detalhar conta centro de custo
-----
+# Detalhar conta centro de custo
 
 ### Request:
 
@@ -320,8 +349,7 @@ Detalhar conta centro de custo
 }
 ```
 
-Cria um centro de custo
-----
+# Cria um centro de custo
 
 ### Request:
 
@@ -347,8 +375,7 @@ Cria um centro de custo
 }
 ```
 
-Atualizar um centro de custo
-----
+# Atualizar um centro de custo
 
 ### Request:
 
@@ -373,8 +400,7 @@ Atualizar um centro de custo
 }
 ```
 
-Excluir centro de custo
-----
+# Excluir centro de custo
 
 ### Request:
 
@@ -392,8 +418,7 @@ Excluir centro de custo
 }
 ```
 
-Listar categorias
-----
+# Listar categorias
 
 ### Request:
 
@@ -438,8 +463,7 @@ Listar categorias
 ]
 ```
 
-Detalhar categoria
-----
+# Detalhar categoria
 
 ### Request:
 
@@ -458,8 +482,7 @@ Detalhar categoria
 }
 ```
 
-Cria uma categoria
-----
+# Cria uma categoria
 
 ### Request
 
@@ -486,8 +509,7 @@ Cria uma categoria
 }
 ```
 
-Atualizar uma categoria
-----
+# Atualizar uma categoria
 
 ### Request:
 
@@ -514,8 +536,7 @@ Atualizar uma categoria
 }
 ```
 
-Excluir uma categoria
-----
+# Excluir uma categoria
 
 Ao excluir uma categoria você pode informar uma categoria para substitui-la, todas as movimentações da categoria excluídas serão transferidas para a categoria substituta. Se a categoria substituta não for informada, a categoria padrão substituirá a categoria excluída.
 
@@ -545,8 +566,7 @@ Ao excluir uma categoria você pode informar uma categoria para substitui-la, to
 ```
 
 
-Listar cartões de crédito
-----
+# Listar cartões de crédito
 
 ### Request:
 
@@ -587,8 +607,7 @@ Listar cartões de crédito
 ]
 ```
 
-Detalhar cartão de crédito
-----
+# Detalhar cartão de crédito
 
 ### Request:
 
@@ -613,8 +632,7 @@ Detalhar cartão de crédito
 }
 ```
 
-Criar um cartão de crédito
-----
+# Criar um cartão de crédito
 
 ### Request:
 
@@ -651,8 +669,7 @@ Criar um cartão de crédito
 }
 ```
 
-Atualizar um cartão de crédito
-----
+# Atualizar um cartão de crédito
 
 ### Request:
 
@@ -688,8 +705,7 @@ Atualizar um cartão de crédito
 }
 ```
 
-Excluir um cartão de crédito
-----
+# Excluir um cartão de crédito
 
 ### Request:
 
@@ -714,8 +730,7 @@ Excluir um cartão de crédito
 }
 ```
 
-Listar as faturas de um cartão de crédito
-----
+# Listar as faturas de um cartão de crédito
 
 ### Request:
 
@@ -860,8 +875,7 @@ Listar as faturas de um cartão de crédito
 ]
 ```
 
-Detalhar uma fatura de cartão de crédito
-----
+# Detalhar uma fatura de cartão de crédito
 
 ### Request:
 
@@ -941,8 +955,7 @@ Detalhar uma fatura de cartão de crédito
 }
 ```
 
-Pagamento de uma fatura
-----
+# Pagamento de uma fatura
 
 ### Request:
 
@@ -971,8 +984,7 @@ Pagamento de uma fatura
 }
 ```
 
-Listar contatos
-----
+# Listar contatos
 
 ### Request:
 
@@ -1005,8 +1017,7 @@ Listar contatos
 ]
 ```
 
-Detalhar um contato
-----
+# Detalhar um contato
 
 ### Request:
 
@@ -1024,8 +1035,7 @@ Detalhar um contato
 }
 ```
 
-Cria um contato
-----
+# Cria um contato
 
 ### Request:
 
@@ -1055,8 +1065,7 @@ Cria um contato
 }
 ```
 
-Atualizar um contato
-----
+# Atualizar um contato
 
 ### Request:
 
@@ -1084,8 +1093,7 @@ Atualizar um contato
 }
 ```
 
-Excluir contato
-----
+# Excluir contato
 
 ### Request:
 
@@ -1107,8 +1115,7 @@ Excluir contato
 ```
 
 
-Listar movimentações
-----
+# Listar movimentações
 A paginação de movimentações é feita com os parametros start_date e end_date, conforme descrito na seção de Paginação acima. O periodo processado será sempre mês inteiro. Ou seja, seu start_date é sempre processado como ```start_date.beginning_of_month``` e o seu end_date é sempre convertido para ```end_date.end_of_month```.
 
 ### Request:
@@ -1218,8 +1225,7 @@ A paginação de movimentações é feita com os parametros start_date e end_dat
 ]
 ```
 
-Detalhar uma movimentação
-----
+# Detalhar uma movimentação
 
 ### Request:
 
@@ -1253,8 +1259,7 @@ Detalhar uma movimentação
 }
 ```
 
-Cria uma movimentação.
-----
+# Cria uma movimentação.
 
 ### Request:
 
@@ -1299,8 +1304,7 @@ Cria uma movimentação.
 ```
 
 
-Cria uma movimentação recorrente (fixa).
-----
+# Cria uma movimentação recorrente (fixa).
 
 Os valores para `periodicity` são: `["monthly", "yearly", "weekly", "biweekly", "bimonthly", "trimonthly"]`
 
@@ -1350,8 +1354,7 @@ Os valores para `periodicity` são: `["monthly", "yearly", "weekly", "biweekly",
 
 
 
-Cria uma movimentação recorrente (parcelada).
-----
+# Cria uma movimentação recorrente (parcelada).
 
 Os valores para `periodicity` são: `["monthly", "yearly", "weekly", "biweekly", "bimonthly", "trimonthly"]`
 
@@ -1399,8 +1402,7 @@ Os valores para `periodicity` são: `["monthly", "yearly", "weekly", "biweekly",
 ```
 
 
-Atualizar uma movimentação
-----
+# Atualizar uma movimentação
 
 No caso de movimentações fixas ou parceladas, para atualizar a movimentação e as próximas ocorrências envie o attributo `"update_future": true`; Caso queira atualizar todas as ocorrências, inclusive as anteriores, envie o attributo `"update_all": true`. Observe que este último pode alterar o saldo da conta caso as movimentações anteriores já estejam pagas/recebidas.
 
@@ -1448,8 +1450,7 @@ No caso de movimentações fixas ou parceladas, para atualizar a movimentação 
 }
 ```
 
-Excluir movimentação
-----
+# Excluir movimentação
 
 No caso de movimentações fixas ou parceladas, para excluir a movimentação e as próximas ocorrências envie o attributo `"update_future": true`; Caso queira excluir todas as ocorrências, inclusive as anteriores, envie o attributo `"update_all": true`. Observe que este último pode alterar o saldo da conta caso as movimentações anteriores já estejam pagas/recebidas.
 
