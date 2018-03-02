@@ -6,7 +6,7 @@ A API do Organizze
 - [Apenas JSON](#apenas-json)
 - [Paginação](#paginação)
 - [Erros](#erros)
-- [Listar usuários da conta (exclusivo versão Empresasarial do Organizze)](#listar-usuários-da-conta-(exclusivo-versão-empresasarial-do-organizze))
+- [Listar usuários da conta (exclusivo versão Empresarial do Organizze)](#listar-usuários-da-conta-(exclusivo-versão-empresasarial-do-organizze))
 - [Detalhar usuário](#detalhar-usuário)
 - [Listar contas bancárias](#listar-contas-bancárias)
 - [Detalhar conta bancária](#detalhar-conta-bancária)
@@ -108,7 +108,7 @@ Uma tentativa de criar ou atualizar um registro inválido. No exemplo abaixo o u
 
 Usuários
 ====
-# Listar usuários da conta (exclusivo versão Empresasarial do Organizze)
+# Listar usuários da conta (exclusivo versão Empresarial do Organizze)
 
 ### Request:
 
