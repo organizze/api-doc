@@ -740,7 +740,7 @@ Ao excluir uma categoria você pode informar uma categoria para substitui-la, to
 
 ### Request:
 
-```GET /credit_cards/3```
+```GET /credit_cards/3/invoices/186```
 
 ### Response:
 
