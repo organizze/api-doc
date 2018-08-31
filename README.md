@@ -12,6 +12,7 @@ A API do Organizze
 - [Criar conta bancária](#criar-conta-bancária)
 - [Atualizar conta bancária](#atualizar-conta-bancária)
 - [Excluir conta bancária](#excluir-conta-bancária)
+- [Listar metas](#listar-metas)
 - [Listar categorias](#listar-categorias)
 - [Detalhar categoria](#detalhar-categoria)
 - [Cria uma categoria](#cria-uma-categoria)
@@ -49,8 +50,8 @@ Todas as requisições são criptografadas, o Organizze não aceita requisiçõe
 Todas as requisições à API do Organizze devem ser acompanhadas do header User-Agent, use este header para informar qual a sua aplicação e qual o seu email para contato. Veja alguns exemplos de como você pode se identificar usando o header User-Agent:
 
 ```
-User-Agent: Meu Site (falecom@admin.com.br)
-User-Agent: Controle de Estoque (controledeestoque.com.br)
+User-Agent: Esdras (esdras@organizze.com.br)
+User-Agent: Alex (alex@gmail.com)
 ```
 
 Se você não informar este header, você receberá ```400 Bad Request``` como resposta.
@@ -61,7 +62,7 @@ A API só suporta JSON, nós não vamos dar suporte a outro formato. Mesmo que v
 
 # Paginação
 
-Algumas requisições são paginadas, por exemplo, se você listar os contatos da sua conta, a API vai retornar os primeiros 50 contatos, para acessar a próxima página basta enviar ```&page=2``` como parâmetro. Movimentações e faturas de cartão de crédito são paginadas por período. Para informar qual período utilize os parâmetros ```&start_date=2015-09-01&end_date=2015-09-30```. Se você não informar o período o Organizze vai limitar os registros para o período atual: Mês atual para movimentações e Ano atual para faturas de cartão de crédito.
+Movimentações e faturas de cartão de crédito são paginadas por período. Para informar qual período utilize os parâmetros ```&start_date=2015-09-01&end_date=2015-09-30```. Se você não informar o período o Organizze vai limitar os registros para o período atual: Mês atual para movimentações e Ano atual para faturas de cartão de crédito.
 
 # Erros
 
@@ -97,25 +98,6 @@ Uma tentativa de criar ou atualizar um registro inválido. No exemplo abaixo o u
 
 Usuários
 ====
-# Listar usuários da conta (exclusivo versão Empresarial do Organizze)
-
-### Request:
-
-```GET /users```
-
-### Response:
-
-```json
-[
-    {
-        "id": 3,
-        "name": "Esdras Mayrink",
-        "email": "falecom@email.com.br",
-        "role": "admin"
-    }
-]
-```
-
 # Detalhar usuário
 
 ### Request:
@@ -279,6 +261,44 @@ Usuários
 }
 ```
 
+# Listar Metas
+
+Ao chamar a raiz desse endpoint, ira receber todas as metas referentes ao mês atual.
+
+Para retornar todas as metas referentes ao ano, basta escopar na url ```/budgets/2018```
+
+Metas referentes ao mês e ano, basta escopar na url ```/budgets/2018/08``` 
+
+
+### Request:
+
+```GET /budgets```
+
+### Response:
+
+```json
+[
+    {
+        "amount_in_cents": 150000,
+        "category_id": 17,
+        "date": "2018-08-01",
+        "activity_type": 0,
+        "total": 0,
+        "predicted_total": 0,
+        "percentage": "0.0"
+    },
+    {
+        "amount_in_cents": 30000,
+        "category_id": 13,
+        "date": "2018-08-01",
+        "activity_type": 0,
+        "total": 0,
+        "predicted_total": 0,
+        "percentage": "0.0"
+    }
+]
+```
+
 # Listar categorias
 
 ### Request:
@@ -293,33 +313,25 @@ Usuários
         "id": 1,
         "name": "Lazer",
         "color": "438b83",
-        "parent_id": null,
-        "created_at": "2015-08-31T21:28:25-03:00",
-        "updated_at": "2015-08-31T21:28:25-03:00"
+        "parent_id": null
     },
     {
         "id": 3,
         "name": "Saúde",
         "color": "ffff00",
-        "parent_id": null,
-        "created_at": "2015-08-31T21:28:25-03:00",
-        "updated_at": "2015-08-31T21:28:25-03:00"
+        "parent_id": null
     },
     {
         "id": 4,
         "name": "Salário",
         "color": "66ff99",
-        "parent_id": null,
-        "created_at": "2015-08-31T21:29:33-03:00",
-        "updated_at": "2015-08-31T21:29:33-03:00"
+        "parent_id": null
     },
     {
         "id": 5,
         "name": "SEO",
         "color": "cc0000",
-        "parent_id": null,
-        "created_at": "2015-08-31T21:30:10-03:00",
-        "updated_at": "2015-08-31T21:30:10-03:00"
+        "parent_id": null
     }
 ]
 ```
@@ -337,9 +349,7 @@ Usuários
     "id": 1,
     "name": "Lazer",
     "color": "438b83",
-    "parent_id": null,
-    "created_at": "2015-08-31T21:30:10-03:00",
-    "updated_at": "2015-08-31T21:30:10-03:00"
+    "parent_id": null
 }
 ```
 
@@ -364,9 +374,7 @@ Usuários
     "id": 6,
     "name": "SEO",
     "color": "8dd47f",
-    "parent_id": null,
-    "created_at": "2015-09-15T21:20:44-03:00",
-    "updated_at": "2015-09-15T21:20:44-03:00"
+    "parent_id": null
 }
 ```
 
@@ -391,9 +399,7 @@ Usuários
     "id": 6,
     "name": "Marketing",
     "color": "8dd47f",
-    "parent_id": null,
-    "created_at": "2015-09-15T21:20:44-03:00",
-    "updated_at": "2015-09-15T21:20:44-03:00"
+    "parent_id": null
 }
 ```
 
@@ -420,9 +426,7 @@ Ao excluir uma categoria você pode informar uma categoria para substitui-la, to
     "id": 6,
     "name": "Marketing",
     "color": "8dd47f",
-    "parent_id": null,
-    "created_at": "2015-09-15T21:20:44-03:00",
-    "updated_at": "2015-09-15T21:20:44-03:00"
+    "parent_id": null
 }
 ```
 
