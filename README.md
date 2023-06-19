@@ -1080,7 +1080,8 @@ Para isso, deve enviar o parâmetro ```account_id``` com o id da conta bancária
 {
     "description": "Computador",
     "notes": "Pagamento via boleto",
-    "date": "2015-09-16"
+    "date": "2015-09-16",
+    "tags": [{"name": "homeoffice"}]
 }
 ```
 
@@ -1108,7 +1109,8 @@ Para isso, deve enviar o parâmetro ```account_id``` com o id da conta bancária
     "oposite_transaction_id": null,
     "oposite_account_id": null,
     "created_at": "2015-09-04T00:09:34-03:00",
-    "updated_at": "2015-09-04T00:09:34-03:00"
+    "updated_at": "2015-09-04T00:09:34-03:00",
+    "tags": [{"name": "homeoffice"}]
 }
 ```
 
@@ -1227,7 +1229,8 @@ No caso de movimentações fixas ou parceladas, para atualizar a movimentação 
     "notes": "Pagamento via boleto",
     "amount_cents": 20050,
     "date": "2015-12-20",
-    "update_future": true
+    "update_future": true,
+    "tags": [{"name": "via_api"}]
 }
 ```
 
@@ -1255,7 +1258,8 @@ No caso de movimentações fixas ou parceladas, para atualizar a movimentação 
     "oposite_transaction_id": null,
     "oposite_account_id": null,
     "created_at": "2015-09-04T00:09:34-03:00",
-    "updated_at": "2015-09-04T00:34:54-03:00"
+    "updated_at": "2015-09-04T00:34:54-03:00",
+    "tags": [{"name": "via_api"}]
 }
 ```
 
