@@ -1,0 +1,321 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Organizze API",
+        "description": "API para interação com dados financeiros do Organizze",
+        "version": "2.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.organizze.com.br/rest/v2"
+        }
+    ],
+    "paths": {
+        "/accounts": {
+            "get": {
+                "summary": "Retorna uma lista de contas financeiras.",
+                "description": "Retorna uma lista de contas financeiras com detalhes.",
+                "operationId": "GetAccounts",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Uma lista de contas financeiras",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountArray"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/categories": {
+            "get": {
+                "summary": "Retorna uma lista de categorias.",
+                "description": "Retorna uma lista com todas as categorias das quais as transações podem estar vinculadas.",
+                "operationId": "GetCategories",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Uma lista de categorias",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryArray"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/transactions": {
+            "get": {
+                "summary": "Retorna uma lista de transações.",
+                "description": "Retorna uma lista de transações dentro do intervalo de datas especificado ou filtrado por conta bancária (accounts).",
+                "operationId": "GetTransactions",
+                "parameters": [
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "Data de início para filtrar transações (formato YYYY-MM-DD).",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "Data final para filtrar transações (formato YYYY-MM-DD).",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "account_id",
+                        "in": "query",
+                        "description": "ID da conta bancária para filtrar transações.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Uma lista de transações financeiras",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransactionArray"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Requisição inválida, parâmetros incorretos"
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Account": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "O ID único da conta.",
+                        "example": 3
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "O nome da conta.",
+                        "example": "Bradesco CC"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "Descrição detalhada da conta.",
+                        "example": "Some descriptions"
+                    },
+                    "archived": {
+                        "type": "boolean",
+                        "description": "Indica se a conta está arquivada.",
+                        "example": false
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Data e hora de criação da conta.",
+                        "example": "2015-06-22T16:17:03-03:00"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Data e hora da última atualização da conta.",
+                        "example": "2015-08-31T22:24:24-03:00"
+                    },
+                    "default": {
+                        "type": "boolean",
+                        "description": "Indica se a conta é a padrão.",
+                        "example": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "checking",
+                            "savings",
+                            "other"
+                        ],
+                        "description": "Tipo de conta financeira.",
+                        "example": "checking"
+                    }
+                }
+            },
+            "AccountArray": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Account"
+                }
+            },
+            "Category": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "O ID único da categoria.",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "O nome da categoria.",
+                        "example": "Lazer"
+                    },
+                    "color": {
+                        "type": "string",
+                        "description": "Código hexadecimal da cor associada à categoria.",
+                        "example": "438b83"
+                    },
+                    "parent_id": {
+                        "type": "integer",
+                        "nullable": true,
+                        "description": "O ID da categoria pai, se houver.",
+                        "example": null
+                    }
+                }
+            },
+            "CategoryArray": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Category"
+                }
+            },
+            "Transaction": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 15
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "SAQUE LOT"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2015-09-06"
+                    },
+                    "paid": {
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "amount_cents": {
+                        "type": "integer",
+                        "example": -15000
+                    },
+                    "total_installments": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "installment": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "recurring": {
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "account_id": {
+                        "type": "integer",
+                        "example": 3
+                    },
+                    "account_type": {
+                        "type": "string",
+                        "example": "CreditCard"
+                    },
+                    "category_id": {
+                        "type": "integer",
+                        "example": 21
+                    },
+                    "contact_id": {
+                        "type": "integer",
+                        "nullable": true,
+                        "example": null
+                    },
+                    "notes": {
+                        "type": "string",
+                        "nullable": true,
+                        "example": ""
+                    },
+                    "attachments_count": {
+                        "type": "integer",
+                        "example": 0
+                    },
+                    "credit_card_id": {
+                        "type": "integer",
+                        "nullable": true,
+                        "example": null
+                    },
+                    "credit_card_invoice_id": {
+                        "type": "integer",
+                        "nullable": true,
+                        "example": null
+                    },
+                    "paid_credit_card_id": {
+                        "type": "integer",
+                        "nullable": true,
+                        "example": null
+                    },
+                    "paid_credit_card_invoice_id": {
+                        "type": "integer",
+                        "nullable": true,
+                        "example": null
+                    },
+                    "oposite_transaction_id": {
+                        "type": "integer",
+                        "nullable": true,
+                        "example": null
+                    },
+                    "oposite_account_id": {
+                        "type": "integer",
+                        "nullable": true,
+                        "example": null
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2015-07-01T10:52:06-03:00"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2015-08-04T20:17:17-03:00"
+                    }
+                }
+            },
+            "TransactionArray": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Transaction"
+                }
+            }
+        }
+    }
+}

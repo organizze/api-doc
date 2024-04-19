@@ -107,6 +107,8 @@ A API do Organizze
 
 A API do Organizze possibilita que aplicações se comuniquem com a sua conta no sistema. Este documento explica como o Organizze funciona, quais são os objetos envolvidos e como esta comunicação pode ser feita. Esta é a primeira versão da API, ainda em versão beta, algumas mudanças e melhorias serão implementadas futuramente.
 
+# OpenAPI
+Você também pode acessar a documentação OpenAPI da API do Organizze em formato JSON. [Documentação OpenAPI](./api/openapi.json). Essa documentação contém apenas algumas requisições GET, que são usadas através do ChatGPT.
 
 # Fazendo uma requisição
 
