@@ -1307,3 +1307,213 @@ No caso de movimentações fixas ou parceladas, para excluir a movimentação e 
     "updated_at": "2015-09-04T00:34:54-03:00"
 }
 ```
+
+
+# Transfers
+
+O endpoint de transfers registra uma transferência entre duas contas bancarias. Uma transferência cria dois registros, um de saida na conta de origem e outro de entrada na conta de destino.
+
+## Listar transfers
+
+### Request:
+
+```GET /transfers```
+
+### Response:
+
+```json
+[
+    {
+        "id": 10,
+        "description": "Transferência",
+        "date": "2015-09-01",
+        "paid": true,
+        "amount_cents": -10000,
+        "total_installments": 1,
+        "installment": 1,
+        "recurring": false,
+        "account_id": 3,
+        "category_id": 21,
+        "notes": null,
+        "attachments_count": 0,
+        "credit_card_id": null,
+        "credit_card_invoice_id": null,
+        "paid_credit_card_id": null,
+        "paid_credit_card_invoice_id": null,
+        "oposite_transaction_id": 11,
+        "oposite_account_id": 4,
+        "created_at": "2015-09-01T23:42:29-03:00",
+        "updated_at": "2015-09-01T23:42:29-03:00",
+        "tags": [],
+        "attachments": [],
+        "recurrence_id": null
+    }
+]
+```
+
+## Detalhar uma transferência
+
+### Request:
+
+```GET /transfers/10```
+
+### Response:
+
+```json
+{
+    "id": 10,
+    "description": "Transferência",
+    "date": "2015-09-01",
+    "paid": true,
+    "amount_cents": -10000,
+    "total_installments": 1,
+    "installment": 1,
+    "recurring": false,
+    "account_id": 3,
+    "category_id": 21,
+    "notes": null,
+    "attachments_count": 0,
+    "credit_card_id": null,
+    "credit_card_invoice_id": null,
+    "paid_credit_card_id": null,
+    "paid_credit_card_invoice_id": null,
+    "oposite_transaction_id": 11,
+    "oposite_account_id": 4,
+    "created_at": "2015-09-01T23:42:29-03:00",
+    "updated_at": "2015-09-01T23:42:29-03:00",
+    "tags": [],
+    "attachments": [],
+    "recurrence_id": null
+}
+```
+
+## Criar uma transferência
+
+Somente contas bancarias sao permitidas. Cartoes de credito nao sao aceitos como conta de origem ou destino.
+
+### Request:
+
+```POST /transfers```
+
+#### Body:
+
+```json
+{
+    "credit_account_id": 3,
+    "debit_account_id": 4,
+    "amount_cents": 10000,
+    "date": "2015-09-01",
+    "paid": true,
+    "tags": [{"name": "ajuste"}]
+}
+```
+
+### Response:
+
+```json
+{
+    "id": 10,
+    "description": "Transferência",
+    "date": "2015-09-01",
+    "paid": true,
+    "amount_cents": -10000,
+    "total_installments": 1,
+    "installment": 1,
+    "recurring": false,
+    "account_id": 3,
+    "category_id": 21,
+    "notes": null,
+    "attachments_count": 0,
+    "credit_card_id": null,
+    "credit_card_invoice_id": null,
+    "paid_credit_card_id": null,
+    "paid_credit_card_invoice_id": null,
+    "oposite_transaction_id": 11,
+    "oposite_account_id": 4,
+    "created_at": "2015-09-01T23:42:29-03:00",
+    "updated_at": "2015-09-01T23:42:29-03:00",
+    "tags": [{"name": "ajuste"}],
+    "attachments": [],
+    "recurrence_id": null
+}
+```
+
+## Atualizar uma transferência
+
+### Request:
+
+```PUT /transfers/10```
+
+#### Body:
+
+```json
+{
+    "description": "Transferência ajustada",
+    "notes": "Ajuste manual",
+    "tags": [{"name": "revisado"}]
+}
+```
+
+### Response:
+
+```json
+{
+    "id": 10,
+    "description": "Transferência ajustada",
+    "date": "2015-09-01",
+    "paid": true,
+    "amount_cents": -10000,
+    "total_installments": 1,
+    "installment": 1,
+    "recurring": false,
+    "account_id": 3,
+    "category_id": 21,
+    "notes": "Ajuste manual",
+    "attachments_count": 0,
+    "credit_card_id": null,
+    "credit_card_invoice_id": null,
+    "paid_credit_card_id": null,
+    "paid_credit_card_invoice_id": null,
+    "oposite_transaction_id": 11,
+    "oposite_account_id": 4,
+    "created_at": "2015-09-01T23:42:29-03:00",
+    "updated_at": "2015-09-01T23:44:29-03:00",
+    "tags": [{"name": "revisado"}],
+    "attachments": [],
+    "recurrence_id": null
+}
+```
+
+## Excluir transferência
+
+### Request:
+
+```DELETE /transfers/10```
+
+### Response:
+
+```json
+{
+    "id": 10,
+    "description": "Transferência",
+    "date": "2015-09-01",
+    "paid": true,
+    "amount_cents": -10000,
+    "total_installments": 1,
+    "installment": 1,
+    "recurring": false,
+    "account_id": 3,
+    "category_id": 21,
+    "notes": null,
+    "attachments_count": 0,
+    "credit_card_id": null,
+    "credit_card_invoice_id": null,
+    "paid_credit_card_id": null,
+    "paid_credit_card_invoice_id": null,
+    "oposite_transaction_id": 11,
+    "oposite_account_id": 4,
+    "created_at": "2015-09-01T23:42:29-03:00",
+    "updated_at": "2015-09-01T23:44:29-03:00",
+    "deleted": true
+}
+```
